@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/laranja_de_fundo"
+    android:padding="20dp"
+    tools:context=".ui.view.TransferenciaActivity">
+
+    <TextView
+        android:id="@+id/text_transferencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Realizar transferência"
+        android:textColor="@color/text_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_boleto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Pagamento de boleto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_transferencia" />
+
+    <TextView
+        android:id="@+id/text_id_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Id da conta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_boleto" />
+
+    <EditText
+        android:id="@+id/edit_id_origem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/laranja_geral"
+        android:hint="Insira o Id da conta de origem"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_id_conta" />
+
+    <TextView
+        android:id="@+id/text_saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Valor da transferência"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_id_origem" />
+
+    <EditText
+        android:id="@+id/edit_valor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/laranja_geral"
+        android:hint="Insira o valor"
+        android:padding="10dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_saldo" />
+
+    <TextView
+        android:id="@+id/text_id_Destino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Id conta a receber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_valor"
+        app:layout_goneMarginStart="10dp" />
+
+    <EditText
+        android:id="@+id/EditIdDestino"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:background="@color/laranja_geral"
+        android:hint="Id da conta que vai receber o depósito"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_id_Destino" />
+
+    <Button
+        android:id="@+id/ButtonVoltar"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:text="Voltar"
+        android:textColor="#fff"
+        android:background="@color/laranja_geral"
+        android:textSize="25sp"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/ButtonTransferir"/>
+
+    <Button
+        android:id="@+id/ButtonTransferir"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/laranja_geral"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/ButtonVoltar"
+        app:layout_constraintHorizontal_weight="6"
+        android:text="Transferir"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/laranja_de_fundo"
+    android:padding="20dp"
+    tools:context=".ui.view.CriarContaPoupancaActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criar conta poupança"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_label_nome_cliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Nome do cliente"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_text_nome_cliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E34C00"
+        android:hint="Insira seu nome aqui"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="#fff"
+        app:layout_constraintLeft_toLeftOf="@+id/text_label_nome_cliente"
+        app:layout_constraintTop_toBottomOf="@id/text_label_nome_cliente" />
+
+
+    <TextView
+        android:id="@+id/text_label_nome_banco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Nome do banco"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/text_label_nome_cliente"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nome_cliente" />
+
+    <EditText
+        android:id="@+id/edit_text_nome_banco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E34C00"
+        android:hint="Insira o nome do banco aqui"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="#fff"
+        app:layout_constraintLeft_toLeftOf="@+id/text_label_nome_banco"
+        app:layout_constraintTop_toBottomOf="@id/text_label_nome_banco" />
+
+
+    <TextView
+        android:id="@+id/text_label_saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Saldo da conta"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/text_label_nome_cliente"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nome_banco" />
+
+    <EditText
+        android:id="@+id/edit_text_saldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E34C00"
+        android:hint="Insira valor do saldo"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        app:layout_constraintLeft_toLeftOf="@+id/text_label_saldo"
+        app:layout_constraintTop_toBottomOf="@id/text_label_saldo" />
+
+
+    <Button
+        android:id="@+id/button_criar_conta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:background="@color/laranja_geral"
+        android:padding="30dp"
+        android:text="Criar"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_voltar" />
+
+    <Button
+        android:id="@+id/button_voltar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:background="@color/laranja_geral"
+        android:padding="30dp"
+        android:text="Voltar"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_criar_conta"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

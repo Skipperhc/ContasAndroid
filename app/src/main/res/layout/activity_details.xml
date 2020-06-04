@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/laranja_de_fundo"
+    android:padding="10dp"
+    tools:context=".ui.view.DetailsActivity">
+
+
+    <TextView
+        android:id="@+id/LabelNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/TextName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/laranja_geral"
+        android:paddingStart="8dp"
+        android:text="nome do sujeito"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LabelNome"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/LabelId"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:text="Id"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/TextId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/TextId" />
+
+    <TextView
+        android:id="@+id/TextId"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/laranja_geral"
+        android:paddingStart="8dp"
+        android:text="id"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/TextBanco"
+        app:layout_constraintEnd_toStartOf="@+id/LabelBanco"
+        app:layout_constraintStart_toStartOf="@+id/TextName"
+        app:layout_constraintTop_toBottomOf="@+id/TextName" />
+
+    <TextView
+        android:id="@+id/LabelBanco"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Banco"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/TextBanco"
+        app:layout_constraintEnd_toStartOf="@+id/TextBanco"
+        app:layout_constraintStart_toEndOf="@+id/TextId"
+        app:layout_constraintTop_toTopOf="@+id/TextBanco" />
+
+    <TextView
+        android:id="@+id/TextBanco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/laranja_geral"
+        android:paddingStart="8dp"
+        android:text="nome do banco da conta"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LabelBanco"
+        app:layout_constraintTop_toBottomOf="@+id/TextName" />
+
+    <TextView
+        android:id="@+id/LabelSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/TextSaldo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TextSaldo" />
+
+    <TextView
+        android:id="@+id/TextSaldo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/laranja_geral"
+        android:paddingStart="8dp"
+        android:text="saldo da conta"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TextId"
+        app:layout_constraintTop_toBottomOf="@+id/TextBanco" />
+
+    <TextView
+        android:id="@+id/LabelLimite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limite"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/TextLimite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TextLimite" />
+
+    <TextView
+        android:id="@+id/TextLimite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/laranja_geral"
+        android:paddingStart="8dp"
+        android:text="Limite do maluko"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TextSaldo"
+        app:layout_constraintTop_toBottomOf="@+id/TextSaldo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_operacoes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonVoltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextLimite" />
+
+    <Button
+        android:id="@+id/ButtonVoltar"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="25sp"
+        android:textColor="#fff"
+        android:background="@color/laranja_geral"
+        android:text="Voltar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
