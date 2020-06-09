@@ -12,6 +12,7 @@ import com.example.contasandroid.ui.view.viewholder.BaseViewHolder
 import com.example.contasandroid.ui.view.viewholder.ContaCorrenteViewHolder
 import com.example.contasandroid.ui.view.viewholder.ContaPoupancaViewHolder
 import com.example.contasandroid.ui.view.viewholder.ContaViewHolder
+import java.lang.RuntimeException
 
 private const val POUPANCA_VIEW_TYPE = 1
 private const val CORRENTE_VIEW_TYPE = 2
@@ -40,13 +41,16 @@ class ContaAdapter : RecyclerView.Adapter<ContaViewHolder>() {
         }
     }
 
-    override fun getItemViewType(position: Int): Int =
-        when (mList[position]) {
-            is ContaCorrente -> CORRENTE_VIEW_TYPE
-            is ContaPoupanca -> POUPANCA_VIEW_TYPE
-            is Conta -> POUPANCA_VIEW_TYPE
-            else -> throw IllegalStateException("Cria a view rapa")
+    override fun getItemViewType(position: Int): Int {
+        val item = mList[position]
+        if(item.valorMax != item.saldo) {
+            return CORRENTE_VIEW_TYPE
         }
+        if(item.valorMax == item.saldo) {
+            return POUPANCA_VIEW_TYPE
+        }
+        throw RuntimeException("Crie essa conta rapa")
+    }
 
     //qtd de itens que irá criar
     override fun getItemCount(): Int {

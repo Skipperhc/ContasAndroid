@@ -9,8 +9,7 @@ import com.example.contasandroid.ui.service.model.ContaPoupanca
 import com.example.contasandroid.ui.service.repository.ContaRepository
 import java.lang.NumberFormatException
 
-class CriarContaPoupancaViewModel(application: Application) : ViewModel() {
-    private val mContext = application.applicationContext
+class CriarContaPoupancaViewModel() : ViewModel() {
     private var mSavedConta = MutableLiveData<Boolean>()
     var savedConta = mSavedConta
 
@@ -34,7 +33,7 @@ class CriarContaPoupancaViewModel(application: Application) : ViewModel() {
                     saldo = saldoDouble,
                     valorMax = saldoDouble
                 )
-            ContaRepository(mContext).saveConta(conta)
+            ContaRepository(ContaConstants.GAMBI.CONTEXT).saveConta(conta)
             mMessageToast.value = "Conta criada com sucesso"
             mSavedConta.value = true;
         } catch (excp: NumberFormatException) {

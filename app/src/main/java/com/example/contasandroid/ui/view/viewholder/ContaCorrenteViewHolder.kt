@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_conta_corrente.view.*
 class ContaCorrenteViewHolder(itemView: View) : ContaViewHolder(itemView) {
 
     override fun bind(conta: Conta) {
-        if(conta !is ContaCorrente) throw IllegalArgumentException("")
+//        if(conta !is ContaCorrente) throw IllegalArgumentException("")
         val nome = itemView.findViewById<TextView>(R.id.text_corrente_name)
         val banco = itemView.findViewById<TextView>(R.id.text_corrente_banco)
         val id = itemView.findViewById<TextView>(R.id.text_corrente_id)
