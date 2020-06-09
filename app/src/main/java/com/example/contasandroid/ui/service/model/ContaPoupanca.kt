@@ -1,14 +1,16 @@
 package com.example.contasandroid.ui.service.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(tableName = "conta_poupanca")
-class ContaPoupanca(nomeCliente: String, nomeBanco: String, saldo: Double = 0.0)
-    : Conta(nomeCliente = nomeCliente, nomeBanco = nomeBanco, saldo = saldo) {
+data class ContaPoupancaComOperacoes(
+    @Embedded val conta: ContaPoupanca,
+    @Relation(
+        parentColumn = "contaId",
+        entityColumn = "operacaoId",
+        associateBy = Junction(ContaOperacaoRef::class)
+    )
+    val operacoes: MutableList<Operacao>
+)
 
-    override fun valorMax() : Double {
-        return saldo
-    }
-}
+class ContaPoupanca(saldo: Double, valorMax: Double, nomeCliente: String, nomeBanco: String)
+    : Conta(nomeCliente = nomeCliente, nomeBanco = nomeBanco , saldo = saldo, valorMax = valorMax)

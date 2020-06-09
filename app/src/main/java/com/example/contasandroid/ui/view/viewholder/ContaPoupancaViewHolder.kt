@@ -18,13 +18,13 @@ class ContaPoupancaViewHolder(itemView: View) : ContaViewHolder(itemView) {
 
         image.setOnClickListener {
             var intent = Intent(itemView.context, DetailsActivity::class.java)
-            intent.putExtra("idConta", conta.id)
+            intent.putExtra("idConta", conta.contaId)
             itemView.context.startActivity(intent)
         }
 
         nome.text = conta.nomeCliente
         banco.text = conta.nomeBanco
-        id.text = conta.id.toString()
+        id.text = conta.contaId.toString()
         saldo.text = conta.saldo.toString()
     }
 }

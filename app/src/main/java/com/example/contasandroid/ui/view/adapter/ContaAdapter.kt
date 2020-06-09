@@ -44,6 +44,7 @@ class ContaAdapter : RecyclerView.Adapter<ContaViewHolder>() {
         when (mList[position]) {
             is ContaCorrente -> CORRENTE_VIEW_TYPE
             is ContaPoupanca -> POUPANCA_VIEW_TYPE
+            is Conta -> POUPANCA_VIEW_TYPE
             else -> throw IllegalStateException("Cria a view rapa")
         }
 

@@ -1,7 +1,5 @@
 package com.example.contasandroid.ui.view
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,9 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.contasandroid.R
 import com.example.contasandroid.ui.service.constants.ContaConstants
-import com.example.contasandroid.ui.service.utils.SaveShared
 import com.example.contasandroid.ui.viewmodel.CriarContaCorrenteViewModel
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_criar_conta_corrente.*
 import kotlinx.android.synthetic.main.activity_criar_conta_corrente.button_criar_conta
 import kotlinx.android.synthetic.main.activity_criar_conta_corrente.button_voltar
@@ -27,7 +23,7 @@ class CriarContaCorrenteActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_criar_conta_corrente)
-
+        ContaConstants.GAMBI.CONTEXT = this;
         mViewModel = ViewModelProvider(this).get(CriarContaCorrenteViewModel::class.java)
         setListeners()
         setObservers()
@@ -54,8 +50,6 @@ class CriarContaCorrenteActivity : AppCompatActivity(), View.OnClickListener {
 
         mViewModel.savedConta.observe(this, Observer {
             if(it) {
-                val shared = SaveShared(this)
-                shared.saveList()
                 finish()
             }
         })

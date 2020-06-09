@@ -1,10 +1,14 @@
 package com.example.contasandroid.ui.service.repository
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.contasandroid.ui.service.model.Conta
 
+@Database(entities = arrayOf(Conta::class), version = 1)
 abstract class ContaDatabase : RoomDatabase() {
+    abstract fun contaDao(): ContaDao
 
     companion object {
 
@@ -13,7 +17,8 @@ abstract class ContaDatabase : RoomDatabase() {
             if (!::INSTANCE.isInitialized) {
                 INSTANCE = Room.databaseBuilder(
                     context, ContaDatabase::class.java, "projetoDB")
-                    .allowMainThreadQueries().build()
+                    .allowMainThreadQueries()
+                    .build()
             }
             return INSTANCE
         }

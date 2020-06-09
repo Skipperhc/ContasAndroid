@@ -27,7 +27,6 @@ class DetailsViewModel : ViewModel() {
         mNomeCliente.value = conta.nomeCliente
         mSaldo.value = conta.saldo.toString()
         mNomeBanco.value = conta.nomeBanco
-        mId.value = conta.id.toString()
-        mListaOperacoes.value = conta.listaOperacoes
+        mId.value = conta.contaId.toString()
     }
 }

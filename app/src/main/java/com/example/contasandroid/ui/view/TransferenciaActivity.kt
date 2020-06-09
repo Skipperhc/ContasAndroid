@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.contasandroid.R
+import com.example.contasandroid.ui.service.constants.ContaConstants
 import com.example.contasandroid.ui.viewmodel.MainViewModel
 import com.example.contasandroid.ui.viewmodel.TransferenciaViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,7 +20,7 @@ class TransferenciaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transferencia)
-
+        ContaConstants.GAMBI.CONTEXT = this;
         mViewModel = ViewModelProvider(this).get(TransferenciaViewModel::class.java)
 
         setListeners()

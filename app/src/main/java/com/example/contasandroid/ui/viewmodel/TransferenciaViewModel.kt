@@ -1,17 +1,21 @@
 package com.example.contasandroid.ui.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.contasandroid.ui.service.constants.ContaConstants
 import com.example.contasandroid.ui.service.model.Conta
 import com.example.contasandroid.ui.service.model.ContaCorrente
+import com.example.contasandroid.ui.service.repository.ContaRepository
 import com.example.contasandroid.ui.service.utils.CaixaEletronico
 import com.example.contasandroid.ui.service.utils.InsuficientValueException
 import java.lang.NumberFormatException
 
-class TransferenciaViewModel : ViewModel() {
+class TransferenciaViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val mRepository = ContaRepository(application.applicationContext)
     private var mMessage = MutableLiveData<String>()
     var message: LiveData<String> = mMessage
 
@@ -22,9 +26,9 @@ class TransferenciaViewModel : ViewModel() {
         try {
             val idInt: Int = idOrigem.toInt()
             val valorDouble: Double = valor.toDouble()
-            var conta = searchAccount(idInt)
+            val conta = searchAccount(idInt)
 
-            if (conta.valorMax() < valorDouble) {
+            if (conta.valorMax < valorDouble) {
                 throw InsuficientValueException("Valor maior do que o saldo da conta")
             }
 
@@ -47,7 +51,7 @@ class TransferenciaViewModel : ViewModel() {
             val idDestinoInt: Int = idDestino.toInt()
             var contaOrigem: Conta = searchAccount(idOrigemInt)
             var contaDestino: Conta = searchAccount(idDestinoInt)
-            if (contaOrigem.valorMax() < valorDouble) {
+            if (contaOrigem.valorMax < valorDouble) {
                 throw InsuficientValueException("Valor maior do que o saldo da conta")
             }
             CaixaEletronico.pagar(
@@ -67,6 +71,6 @@ class TransferenciaViewModel : ViewModel() {
     }
 
     fun searchAccount(id: Int) : Conta {
-        return ContaConstants.CONTA.LISTACONTAS.first { it.id == id }
+        return mRepository.getConta(id)
     }
 }

@@ -9,10 +9,13 @@ class ContaConstants private constructor()  {
     }
 
     object CONTA {
-        var LISTACONTAS: ArrayList<Conta> = ArrayList()
+//        var LISTACONTAS: ArrayList<Conta> = ArrayList()
         var IDCONTA = 1
         }
-    
+
+    object GAMBI {
+        lateinit var CONTEXT: Context
+    }
     object CONTROL {
         const val ID_DESTINO_DEFAULT = 0
         const val BOLETO = 1

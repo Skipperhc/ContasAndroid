@@ -1,19 +1,16 @@
 package com.example.contasandroid.ui.service.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-class ContaCorrente (limiteConta: Double, nomeCliente: String, nomeBanco: String, saldo: Double)
-    : Conta(nomeCliente = nomeCliente, saldo = saldo, nomeBanco = nomeBanco) {
+data class ContaCorrenteComOperacoes(
+    @Embedded val conta: ContaCorrente,
+    @Relation(
+        parentColumn = "contaId",
+        entityColumn = "operacaoId",
+        associateBy = Junction(ContaOperacaoRef::class)
+    )
+    val operacoes: MutableList<Operacao>
+)
 
-    var limite: Double = 0.0
-
-    init {
-        this.limite = limiteConta
-    }
-
-    override fun valorMax(): Double {
-        return saldo + limite
-    }
-}
+class ContaCorrente(saldo: Double, valorMax: Double, nomeCliente: String, nomeBanco: String)
+    : Conta(nomeCliente = nomeCliente, nomeBanco = nomeBanco , saldo = saldo, valorMax = valorMax)

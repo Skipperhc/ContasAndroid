@@ -25,14 +25,14 @@ class ContaCorrenteViewHolder(itemView: View) : ContaViewHolder(itemView) {
 
         image.setOnClickListener {
             val intent = Intent(itemView.context, DetailsActivity::class.java)
-            intent.putExtra("idConta", conta.id)
+            intent.putExtra("idConta", conta.contaId)
             itemView.context.startActivity(intent) ////////////////////////////////queeeeeeeeeeee
         }
 
         nome.text = conta.nomeCliente
         banco.text = conta.nomeBanco
-        id.text = conta.id.toString()
+        id.text = conta.contaId.toString()
         saldo.text = conta.saldo.toString()
-        limite.text = conta.limite.toString()
+        limite.text = (conta.valorMax - conta.saldo).toString()
     }
 }

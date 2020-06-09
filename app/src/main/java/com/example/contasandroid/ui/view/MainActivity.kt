@@ -1,8 +1,6 @@
 package com.example.contasandroid.ui.view
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,17 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contasandroid.R
-import com.example.contasandroid.ui.service.utils.SaveShared
+import com.example.contasandroid.ui.service.constants.ContaConstants
 import com.example.contasandroid.ui.view.adapter.ContaAdapter
 import com.example.contasandroid.ui.viewmodel.MainViewModel
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mViewModel: MainViewModel
     private val mContaAdapter = ContaAdapter()
-    private lateinit var mSaveShared: SaveShared
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +25,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             supportActionBar!!.hide()
         }
 
-        mSaveShared = SaveShared(this)
+        ContaConstants.GAMBI.CONTEXT = this;
         mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         //1 - Obter a recycler
         val recycler = recycle_view_contas
 
@@ -40,7 +37,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //3 - Definir um adapter
         recycler.adapter = mContaAdapter
 
-        mSaveShared.loadList()
         setupListeners()
         setupObservers()
     }

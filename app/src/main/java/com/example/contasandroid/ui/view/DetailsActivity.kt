@@ -9,26 +9,31 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contasandroid.R
 import com.example.contasandroid.ui.service.constants.ContaConstants
 import com.example.contasandroid.ui.service.model.ContaCorrente
+import com.example.contasandroid.ui.service.repository.ContaDatabase
+import com.example.contasandroid.ui.service.repository.ContaRepository
 import com.example.contasandroid.ui.view.adapter.OperacaoAdapter
 import com.example.contasandroid.ui.viewmodel.DetailsViewModel
 import com.example.contasandroid.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
+    private lateinit var mRepository: ContaRepository
     private lateinit var mViewModel: DetailsViewModel
     private val mOperacaoAdapter = OperacaoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-
-        var extras = intent.extras
+        ContaConstants.GAMBI.CONTEXT = this;
+        mRepository = ContaRepository(this)
+        val extras = intent.extras
 
         if (extras != null) {
             val idConta = extras.getInt("idConta")
-            var conta = ContaConstants.CONTA.LISTACONTAS.first { it.id == idConta }
+            var conta = mRepository.getConta(idConta)
 
             mViewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
+
             //1 - Obter a recycler
             val recycler = recycler_view_operacoes
 
